@@ -8,5 +8,5 @@ export default defineNuxtConfig({
 
   pwa: {},
 
-  // formkit: { autoImport: true },
+  formkit: { autoImport: true },
 });
