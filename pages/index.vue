@@ -1,12 +1,12 @@
-<script setup>
-const castRangeToNumber = (node) => {
+<script lang="ts" setup>
+const castRangeToNumber = (node: FormKitNode) => {
   // We add a check to add the cast only to range inputs
   if (node.props.type !== "range") return;
 
   node.hook.input((value, next) => next(Number(value)));
 };
 
-const createCharacter = async (fields) => {
+const createCharacter = async (fields: any) => {
   await new Promise((r) => setTimeout(r, 1000));
   alert(JSON.stringify(fields));
 };
@@ -24,6 +24,15 @@ const createCharacter = async (fields) => {
         :plugins="[castRangeToNumber]"
         #default="{ value }"
       >
+        <FormKit
+          type="checkbox"
+          label="Terms and Conditions"
+          help="Do you agree to our terms of service?"
+          name="terms"
+          validation="accepted"
+          validation-visibility="dirty"
+        />
+
         <FormKit
           type="text"
           name="name"
